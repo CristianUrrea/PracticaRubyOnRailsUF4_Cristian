@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @zone.nom %>
+</p>
+
+<p>
+  <strong>Clima:</strong>
+  <%= @zone.clima %>
+</p>
+
+<p>
+  <strong>Temperatura:</strong>
+  <%= @zone.temperatura %>
+</p>
+
+<p>
+  <strong>Humitat:</strong>
+  <%= @zone.humitat %>
+</p>
+
+<%= link_to 'Edit', edit_zone_path(@zone) %> |
+<%= link_to 'Back', zones_path %>

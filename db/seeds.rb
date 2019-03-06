@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Zone.delete_all
+
+Zone.create!([
+  {id: 1, nom: "Lleons", clima: "Calid", temperatura: 25, humitat: 10},
+  {id: 2, nom: "Elefans", clima: "Tropical", temperatura: 27, humitat: 15},
+  {id: 3, nom: "Jirafas", clima: "Tropical", temperatura: 24, humitat: 12},
+  {id: 4, nom: "Mono", clima: "Mediterrani", temperatura: 26, humitat: 9},
+  {id: 5, nom: "Ballenas", clima: "Artic", temperatura: 5, humitat: 1}
+])
