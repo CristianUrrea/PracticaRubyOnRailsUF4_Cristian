@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nom: MyString
+  raza: MyString
+  zone: one
+  any_naixement: MyString
+  user: one
+
+two:
+  nom: MyString
+  raza: MyString
+  zone: two
+  any_naixement: MyString
+  user: two

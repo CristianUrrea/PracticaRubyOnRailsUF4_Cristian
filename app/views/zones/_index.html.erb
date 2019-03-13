@@ -1,0 +1,10 @@
+<% @zones.each do |zone| %>
+  <tr>
+    <td><%= zone.nom %></td>
+    <td><%= zone.clima %></td>
+    <td><%= zone.temperatura %></td>
+    <td><%= zone.humitat %></td>
+    <td><%= link_to "Edit", edit_zone_path(zone), remote: true, class: "btn btn-default" %></td>
+    <td><%= link_to "Delete", zone_delete_path(zone), remote: true, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>

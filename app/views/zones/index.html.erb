@@ -1,33 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="well">
+    <%= link_to "New Zone", new_zone_path, remote: true, class: "btn btn-primary text-white" %>
+  </div>
+  <div class="new-zone"></div>
 
-<h1>Zones</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nom</th>
-      <th>Clima</th>
-      <th>Temperatura</th>
-      <th>Humitat</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @zones.each do |zone| %>
+  <table class="table table-bordered table-striped">
+    <thead>
       <tr>
-        <td><%= zone.nom %></td>
-        <td><%= zone.clima %></td>
-        <td><%= zone.temperatura %></td>
-        <td><%= zone.humitat %></td>
-        <td><%= link_to 'Show', zone %></td>
-        <td><%= link_to 'Edit', edit_zone_path(zone) %></td>
-        <td><%= link_to 'Destroy', zone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Nom</th>
+        <th>Clima</th>
+        <th>Temperatura</th>
+        <th>Humitat</th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Zone', new_zone_path %>
+    </thead>
+    <tbody class="zone-index">
+      <%= render "index" %>
+    </tbody>
+  </table>
+</div>
+<div id="zone-modal" class="modal fade"></div>
