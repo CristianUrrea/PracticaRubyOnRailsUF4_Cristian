@@ -1,6 +1,8 @@
 <div class="container">
   <div class="well">
     <%= link_to "New Zone", new_zone_path, remote: true, class: "btn btn-primary text-white" %>
+    <%= link_to "Animals", animals_path, class: "btn btn-primary text-white" %>
+
   </div>
   <div class="new-zone"></div>
 
@@ -19,5 +21,6 @@
       <%= render "index" %>
     </tbody>
   </table>
+
 </div>
 <div id="zone-modal" class="modal fade"></div>

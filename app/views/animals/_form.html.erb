@@ -1,50 +1,54 @@
-<%= form_with(model: animal, local: true) do |form| %>
-  <% if animal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(animal.errors.count, "error") %> prohibited this animal from being saved:</h2>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <%= form_for @animal, remote: true, html: { style: "display:inline;" } do |f| %>
+      <div class="modal-body">
+        <ul class="errors"></ul>
 
-      <ul>
-      <% animal.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :nom %>
-    <%= form.text_field :nom, id: :animal_nom %>
+        <div class="form-group">
+          <%= f.label :nom, class:"control-label" %>
+          <%= f.text_field :nom, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :raza, class: "control-label" %>
+          <%= f.text_field :raza, class: "form-control" %>
+        </div>
+        <% if f.object.persisted? %>
+          <div class="form-group">
+            <%= f.label :zone, class: "control-label" %>
+            <%= f.select :zone_id, @zones.collect { |zone| [zone.nom, zone.id]},{}, class: "form-control" %>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <%= f.label :zone, class: "control-label" %>
+            <%= f.select :zone_id, @zones.collect { |zone| [zone.nom, zone.id]},{}, class: "form-control" %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :any_naixement, class: "control-label" %>
+          <%= f.date_field :any_naixement, class: "form-control" %>
+        </div>
+        <% if f.object.persisted? %>
+          <div class="form-group">
+            <%= f.label :user, class: "control-label" %>
+            <%= f.select :user_id, @users.collect { |user| [user.email, user.id]},{}, class: "form-control" %>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <%= f.label :user, class: "control-label" %>
+            <%= f.select :user_id, @users.collect { |user| [user.email, user.id]},{}, class: "form-control" %>
+          </div>
+        <% end %>
+        <div class="form-group">
+          <%= f.label :avatar do %>
+            <%= f.file_field :avatar %>
+            <%= f.hidden_field :avatar_cache %>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <%= f.submit class: "btn btn-primary" %>
+        <%= link_to "Cancel", "#", class: "btn", data: {dismiss: "modal"} %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :raza %>
-    <%= form.text_field :raza, id: :animal_raza %>
-  </div>
-
-  <div class="field">
-    <%= form.label :zone_id %>
-    <%= form.text_field :zone_id, id: :animal_zone_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :any_naixement %>
-    <%= form.text_field :any_naixement, id: :animal_any_naixement %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :animal_user_id %>
-  </div>
-
-  <div class="field">
-  <%= form.label :avatar do %>
-    <%= form.file_field :avatar %>
-    <%= form.hidden_field :avatar_cache %>
-  <% end %>
-  </div>
-
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>

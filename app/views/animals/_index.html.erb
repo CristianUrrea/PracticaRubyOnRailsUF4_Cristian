@@ -1,0 +1,22 @@
+<% @animals.each do |animal| %>
+  <tr>
+    <td><%= animal.nom %></td>
+    <td><%= animal.raza %></td>
+    <td><%= animal.zone.nom %></td>
+    <td><%= animal.any_naixement %></td>
+    <td>
+      <% if animal.user.nil? %>
+        <p>Sense cuidador</p>
+      <% else %>
+        <%= animal.user.email %>
+      <% end %>
+    </td>
+    <td>
+      <% if animal.avatar.url.present? %>
+        <%= image_tag(animal.avatar.url, width: 40, height: 40) %>
+      <% end %>
+    </td>
+    <td><%= link_to "Edit", edit_animal_path(animal), remote: true, class: "btn btn-default" %></td>
+    <td><%= link_to "Delete", animal_delete_path(animal), remote: true, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>
