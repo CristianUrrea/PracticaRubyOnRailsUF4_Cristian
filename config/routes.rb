@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root to: 'zones#index'
+  # resources :zones do
+  #   resources :animals
+  # end
   resources :animals do
     get "delete"
   end
