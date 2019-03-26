@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ZonesControllerTest < ActionDispatch::IntegrationTest
   setup do
+
     @clima = "clima_new"
     @humitat = 20
     @nom = "zone_new"
@@ -21,10 +22,10 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create zone" do
     assert_difference('Zone.count') do
-      post zones_url, params: { zone: { clima: @clima, humitat: @humitat, nom: @nom, temperatura: @temperatura } }
+      post zones_url, params: { zone: { clima: @clima, humitat: @humitat, nom: @nom, temperatura: @temperatura } }, xhr: true
     end
-
-    assert_redirected_to zone_url(Zone.last)
+    assert_response :success
+    # assert_redirected_to zone_url(Zone.last)
   end
 
   test "should show zone" do
@@ -38,15 +39,19 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update zone" do
-    patch zone_url(@zone), params: { zone: { clima: @clima, humitat: @humitat, nom: @nom, temperatura: @temperatura } }
-    assert_redirected_to zone_url(@zone)
+    patch zone_url(@zone), params: { zone: { clima: @clima, humitat: @humitat, nom: @nom, temperatura: @temperatura } }, xhr: true
+    #assert_redirected_to zone_url(@zone)
+    assert_response :success
+    #assert_equal "text/javascript", @response.content_type
   end
 
   test "should destroy zone" do
     assert_difference('Zone.count', -1) do
-      delete zone_url(@zone)
+      delete zone_url(@zone), xhr: true
     end
 
-    assert_redirected_to zones_url
+    # assert_redirected_to zones_url
+    assert_response :success
+
   end
 end

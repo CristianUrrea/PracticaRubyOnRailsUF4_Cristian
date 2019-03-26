@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   root to: 'zones#index'
   resources :api_zoo do
-    get "zones" => 'api_zoo#zones'
-    get "animals" => 'api_zoo#animals'
     collection do
-      get :users
+      get "zones" => 'api_zoo#zones'
+      get "animals" => 'api_zoo#animals'
     end
   end
   resources :animals do
