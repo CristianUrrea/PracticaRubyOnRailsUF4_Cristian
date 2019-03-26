@@ -3,7 +3,15 @@
     <%= link_to "New animal", new_animal_path, class: "btn btn-primary" %>
   </div>
   <div class="new-animal"></div>
-
+  <div>
+<%= form_tag(animals_path, method: :get) do %>
+  <div class="col s8 l8">
+    <%= text_field_tag :nom, params[:nom] %>
+    <%= submit_tag 'Search', {:class => "white-text btn waves-effect blue"} %>
+  </div>
+<% end %>
+</div>
+<br>
   <table class="table table-bordered table-striped">
     <thead>
       <tr>

@@ -3,13 +3,13 @@ class ApiZooController < ApplicationController
   before_action :set_animal, only: [:show, :edit, :update, :destroy]
 
   # GET /zones
- def index
+ def zones
    @zones = Zone.all
    json_response(@zones)
  end
 
    # GET /animals
-  def index
+  def animals
     @animals = Animal.all
     json_response(@animals)
   end

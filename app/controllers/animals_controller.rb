@@ -3,7 +3,18 @@ class AnimalsController < ApplicationController
   # GET /animals
   # GET /animals.json
   def index
-    @animals = Animal.all
+    # @animals = Animal.all
+    if params[:nom]
+      @animals = Animal.where("nom LIKE ?", "%#{params[:nom]}%")
+    else
+      @animals = Animal.all
+    end
+    # @search = params[:search]
+     # if @search==""
+       # @animals = Animal.all
+     # elsif @buscar
+     # else
+     # end
   end
 
   # GET /animals/1

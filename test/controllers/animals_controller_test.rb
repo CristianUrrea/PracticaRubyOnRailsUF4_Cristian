@@ -2,6 +2,11 @@ require 'test_helper'
 
 class AnimalsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @any_naixement = "2019-03-29"
+    @nom = "test"
+    @raza = "test r"
+    @user_id = 2
+    @zone_id = 2
     @animal = animals(:one)
   end
 
@@ -17,7 +22,7 @@ class AnimalsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create animal" do
     assert_difference('Animal.count') do
-      post animals_url, params: { animal: { any_naixement: @animal.any_naixement, nom: @animal.nom, raza: @animal.raza, user_id: @animal.user_id, zone_id: @animal.zone_id } }
+      post animals_url, params: { animal: { any_naixement: @any_naixement, nom: @nom, raza: @raza, user_id: @user_id, zone_id: @zone_id } }
     end
 
     assert_redirected_to animal_url(Animal.last)
@@ -34,7 +39,7 @@ class AnimalsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update animal" do
-    patch animal_url(@animal), params: { animal: { any_naixement: @animal.any_naixement, nom: @animal.nom, raza: @animal.raza, user_id: @animal.user_id, zone_id: @animal.zone_id } }
+    patch animal_url(@animal), params: { animal: { any_naixement: @any_naixement, nom: @nom, raza: @raza, user_id: @user_id, zone_id: @zone_id } }
     assert_redirected_to animal_url(@animal)
   end
 

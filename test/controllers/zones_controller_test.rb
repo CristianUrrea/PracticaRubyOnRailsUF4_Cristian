@@ -2,6 +2,10 @@ require 'test_helper'
 
 class ZonesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @clima = "clima_new"
+    @humitat = 20
+    @nom = "zone_new"
+    @temperatura = -10
     @zone = zones(:one)
   end
 
@@ -17,7 +21,7 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create zone" do
     assert_difference('Zone.count') do
-      post zones_url, params: { zone: { clima: @zone.clima, humitat: @zone.humitat, nom: @zone.nom, temperatura: @zone.temperatura } }
+      post zones_url, params: { zone: { clima: @clima, humitat: @humitat, nom: @nom, temperatura: @temperatura } }
     end
 
     assert_redirected_to zone_url(Zone.last)
@@ -34,7 +38,7 @@ class ZonesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update zone" do
-    patch zone_url(@zone), params: { zone: { clima: @zone.clima, humitat: @zone.humitat, nom: @zone.nom, temperatura: @zone.temperatura } }
+    patch zone_url(@zone), params: { zone: { clima: @clima, humitat: @humitat, nom: @nom, temperatura: @temperatura } }
     assert_redirected_to zone_url(@zone)
   end
 

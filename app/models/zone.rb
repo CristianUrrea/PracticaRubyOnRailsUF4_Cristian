@@ -1,5 +1,5 @@
 class Zone < ApplicationRecord
-  has_many :animals, dependent: :destroy;
+  has_many :animals, dependent: :destroy
   validates :temperatura,
             presence: true,
             numericality: { greater_than_or_equal_to: -20, less_than_or_equal_to: 60 }

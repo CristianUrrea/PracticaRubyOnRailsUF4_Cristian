@@ -1,6 +1,6 @@
 class Animal < ApplicationRecord
-  belongs_to :zone
-  belongs_to :user
+  belongs_to :zone, dependent: :destroy
+  belongs_to :user, dependent: :destroy
 
   mount_uploader :avatar, AvatarUploader
 

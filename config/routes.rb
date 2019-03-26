@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
   root to: 'zones#index'
-  # resources :zones do
-  #   resources :animals
-  # end
+  resources :api_zoo do
+    get "zones" => 'api_zoo#zones'
+    get "animals" => 'api_zoo#animals'
+    collection do
+      get :users
+    end
+  end
   resources :animals do
     get "delete"
   end
